@@ -181,22 +181,21 @@ footer {
 
         <h2>📺 Все серии</h2>
 
-        <div class="episode-grid">
+        <div class="episode-grid" id="episodeList"></div>
 
-            <a href="watch.html?episode=1" class="episode active">1</a>
-            <a href="watch.html?episode=2" class="episode">2</a>
-            <a href="watch.html?episode=3" class="episode">3</a>
-            <a href="watch.html?episode=4" class="episode">4</a>
-            <a href="watch.html?episode=5" class="episode">5</a>
-            <a href="watch.html?episode=6" class="episode">6</a>
-            <a href="watch.html?episode=7" class="episode">7</a>
-            <a href="watch.html?episode=8" class="episode">8</a>
-            <a href="watch.html?episode=9" class="episode">9</a>
-            <a href="watch.html?episode=10" class="episode">10</a>
-            <a href="watch.html?episode=11" class="episode">11</a>
-            <a href="watch.html?episode=12" class="episode">12</a>
+<script>
+const episodeList = document.getElementById("episodeList");
 
-        </div>
+for (let i = 1; i <= 500; i++) {
+    const episode = document.createElement("a");
+
+    episode.href = "watch.html?episode=" + i;
+    episode.className = "episode";
+    episode.textContent = i;
+
+    episodeList.appendChild(episode);
+}
+</script>
 
     </section>
 
