@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Наруто — AnimeHub</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #0b0b0d;
+    color: #eee;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* HEADER */
+
+header {
+    height: 65px;
+    background: #111114;
+    border-bottom: 1px solid #242428;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 25px;
+
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 900;
+}
+
+.logo span {
+    color: #8d5cff;
+}
+
+.back {
+    margin-left: 35px;
+    color: #aaa;
+    font-size: 14px;
+}
+
+.back:hover {
+    color: white;
+}
+
+/* CONTENT */
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+
+    padding: 30px 20px;
+}
+
+/* ANIME INFO */
+
+.anime {
+    display: grid;
+
+    grid-template-columns: 260px 1fr;
+
+    gap: 30px;
+
+    background: #111114;
+
+    border: 1px solid #242428;
+
+    border-radius: 12px;
+
+    padding: 25px;
+
+    margin-bottom: 30px;
+}
+
+/* POSTER */
+
+.poster {
+    height: 370px;
+
+    border-radius: 9px;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    padding: 20px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 70% 25%,
+            #f59e0b,
+            transparent 25%
+        ),
+        linear-gradient(
+            145deg,
+            #312e81,
+            #111827
+        );
+}
+
+.poster::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            transparent 35%,
+            rgba(0,0,0,.9)
+        );
+}
+
+.poster-title {
+    position: relative;
+
+    z-index: 2;
+
+    font-size: 28px;
+
+    font-weight: bold;
+}
+
+/* INFO */
+
+.info h1 {
+    font-size: 36px;
+
+    margin-bottom: 15px;
+}
+
+.description {
+    color: #aaa;
+
+    line-height: 1.7;
+
+    margin-bottom: 20px;
+}
+
+.tags {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin-bottom: 25px;
+}
+
+.tag {
+    background: #1d1928;
+
+    color: #a77aff;
+
+    padding: 7px 10px;
+
+    border-radius: 6px;
+
+    font-size: 12px;
+}
+
+.info-list {
+    color: #999;
+
+    line-height: 1.9;
+
+    font-size: 14px;
+}
+
+.info-list span {
+    color: #eee;
+}
+
+/* EPISODES */
+
+.episodes {
+    background: #111114;
+
+    border: 1px solid #242428;
+
+    border-radius: 12px;
+
+    padding: 25px;
+}
+
+.episodes h2 {
+    margin-bottom: 20px;
+}
+
+.episode-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(6, 1fr);
+
+    gap: 10px;
+}
+
+.episode {
+    background: #1a1a1e;
+
+    border: 1px solid #29292f;
+
+    padding: 12px;
+
+    text-align: center;
+
+    border-radius: 7px;
+
+    color: #aaa;
+
+    transition: .2s;
+}
+
+.episode:hover {
+    background: #8d5cff;
+
+    color: white;
+
+    border-color: #8d5cff;
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+
+    color: #666;
+
+    padding: 35px;
+
+    margin-top: 30px;
+
+    border-top: 1px solid #242428;
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    header {
+        padding: 0 15px;
+    }
+
+    .back {
+        margin-left: 20px;
+    }
+
+    .container {
+        padding: 15px 10px;
+    }
+
+    .anime {
+        grid-template-columns: 1fr;
+
+        padding: 15px;
+    }
+
+    .poster {
+        height: 320px;
+
+        max-width: 240px;
+
+        width: 100%;
+
+        margin: auto;
+    }
+
+    .info h1 {
+        font-size: 28px;
+    }
+
+    .episode-grid {
+        grid-template-columns:
+            repeat(4, 1fr);
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+    <a href="index.html" class="logo">
+        ANIME<span>HUB</span>
+    </a>
+
+    <a href="index.html" class="back">
+        ← На главную
+    </a>
+
+</header>
+
+
+<main class="container">
+
+    <!-- ИНФОРМАЦИЯ ОБ АНИМЕ -->
+
+    <section class="anime">
+
+        <div class="poster">
+
+            <div class="poster-title">
+                НАРУТО
+            </div>
+
+        </div>
+
+
+        <div class="info">
+
+            <h1>
+                Наруто: Ураганные хроники
+            </h1>
+
+            <p class="description">
+
+                Наруто Удзумаки возвращается в
+                Коноху после долгих тренировок.
+
+                Вместе со своими друзьями он
+                продолжает путь ниндзя, сталкиваясь
+                с новыми врагами и опасными
+                приключениями.
+
+            </p>
+
+
+            <div class="tags">
+
+                <div class="tag">
+                    Экшен
+                </div>
+
+                <div class="tag">
+                    Приключения
+                </div>
+
+                <div class="tag">
+                    Сёнэн
+                </div>
+
+                <div class="tag">
+                    Фэнтези
+                </div>
+
+            </div>
+
+
+            <div class="info-list">
+
+                <div>
+                    Год:
+                    <span>2007</span>
+                </div>
+
+                <div>
+                    Статус:
+                    <span>Завершено</span>
+                </div>
+
+                <div>
+                    Серий:
+                    <span>500</span>
+                </div>
+
+                <div>
+                    Студия:
+                    <span>Pierrot</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- СЕРИИ -->
+
+    <section class="episodes">
+
+        <h2>
+            📺 Серии
+        </h2>
+
+
+        <div class="episode-grid">
+
+            <a class="episode" href="#">
+                Серия 1
+            </a>
+
+            <a class="episode" href="#">
+                Серия 2
+            </a>
+
+            <a class="episode" href="#">
+                Серия 3
+            </a>
+
+            <a class="episode" href="#">
+                Серия 4
+            </a>
+
+            <a class="episode" href="#">
+                Серия 5
+            </a>
+
+            <a class="episode" href="#">
+                Серия 6
+            </a>
+
+            <a class="episode" href="#">
+                Серия 7
+            </a>
+
+            <a class="episode" href="#">
+                Серия 8
+            </a>
+
+            <a class="episode" href="#">
+                Серия 9
+            </a>
+
+            <a class="episode" href="#">
+                Серия 10
+            </a>
+
+            <a class="episode" href="#">
+                Серия 11
+            </a>
+
+            <a class="episode" href="#">
+                Серия 12
+            </a>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <div class="logo">
+        ANIME<span>HUB</span>
+    </div>
+
+    <p>
+        AnimeHub © 2026
+    </p>
+
+</footer>
+
+</body>
+</html>
