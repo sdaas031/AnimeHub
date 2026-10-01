@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Просмотр — AnimeHub</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #0b0b0d;
+    color: #eee;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+header {
+    height: 65px;
+    background: #111114;
+    border-bottom: 1px solid #242428;
+    display: flex;
+    align-items: center;
+    padding: 0 25px;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 900;
+}
+
+.logo span {
+    color: #8d5cff;
+}
+
+.back {
+    margin-left: 35px;
+    color: #aaa;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 25px 15px;
+}
+
+.player {
+    background: #000;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #29292f;
+}
+
+.player video {
+    width: 100%;
+    display: block;
+    max-height: 650px;
+    background: #000;
+}
+
+.title {
+    margin: 25px 0 15px;
+}
+
+.title h1 {
+    font-size: 28px;
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.button {
+    background: #1a1a1e;
+    border: 1px solid #29292f;
+    padding: 12px 18px;
+    border-radius: 7px;
+    color: #ddd;
+}
+
+.button:hover {
+    background: #8d5cff;
+    color: white;
+}
+
+.episodes {
+    background: #111114;
+    border: 1px solid #242428;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.episodes h2 {
+    margin-bottom: 15px;
+}
+
+.episode-grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 8px;
+}
+
+.episode {
+    background: #1a1a1e;
+    border: 1px solid #29292f;
+    padding: 10px;
+    text-align: center;
+    border-radius: 6px;
+    color: #aaa;
+}
+
+.episode:hover,
+.episode.active {
+    background: #8d5cff;
+    color: white;
+}
+
+footer {
+    text-align: center;
+    color: #666;
+    padding: 35px;
+}
+
+@media (max-width: 700px) {
+    .episode-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .title h1 {
+        font-size: 22px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <a href="index.html" class="logo">
+        ANIME<span>HUB</span>
+    </a>
+
+    <a href="naruto.html" class="back">
+        ← К Наруто
+    </a>
+</header>
+
+<main class="container">
+
+    <div class="player">
+
+        <video controls poster="">
+            <source src="" type="video/mp4">
+            Ваш браузер не поддерживает видео.
+        </video>
+
+    </div>
+
+    <div class="title">
+        <h1>Наруто — Серия 1</h1>
+    </div>
+
+    <div class="controls">
+        <a href="#" class="button">← Предыдущая</a>
+        <a href="#" class="button">Следующая →</a>
+    </div>
+
+    <section class="episodes">
+
+        <h2>📺 Все серии</h2>
+
+        <div class="episode-grid">
+
+            <a href="watch.html?episode=1" class="episode active">1</a>
+            <a href="watch.html?episode=2" class="episode">2</a>
+            <a href="watch.html?episode=3" class="episode">3</a>
+            <a href="watch.html?episode=4" class="episode">4</a>
+            <a href="watch.html?episode=5" class="episode">5</a>
+            <a href="watch.html?episode=6" class="episode">6</a>
+            <a href="watch.html?episode=7" class="episode">7</a>
+            <a href="watch.html?episode=8" class="episode">8</a>
+            <a href="watch.html?episode=9" class="episode">9</a>
+            <a href="watch.html?episode=10" class="episode">10</a>
+            <a href="watch.html?episode=11" class="episode">11</a>
+            <a href="watch.html?episode=12" class="episode">12</a>
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+    <div class="logo">
+        ANIME<span>HUB</span>
+    </div>
+
+    <p>AnimeHub © 2026</p>
+</footer>
+
+</body>
+</html>
