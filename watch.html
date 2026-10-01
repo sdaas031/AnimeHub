@@ -4,142 +4,141 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Просмотр — AnimeHub</title>
+<title>AnimeHub — Просмотр</title>
 
 <style>
 * {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
 }
 
 body {
-    background: #0b0b0d;
-    color: #eee;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-a {
-    color: inherit;
-    text-decoration: none;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0b0b0f;
+    color: white;
 }
 
 header {
-    height: 65px;
-    background: #111114;
-    border-bottom: 1px solid #242428;
-    display: flex;
-    align-items: center;
-    padding: 0 25px;
+    background: #111118;
+    padding: 18px 25px;
+    border-bottom: 1px solid #24242d;
 }
 
 .logo {
     font-size: 25px;
-    font-weight: 900;
-}
-
-.logo span {
-    color: #8d5cff;
-}
-
-.back {
-    margin-left: 35px;
-    color: #aaa;
+    font-weight: bold;
+    color: #ff3b81;
 }
 
 .container {
     max-width: 1200px;
     margin: auto;
-    padding: 25px 15px;
+    padding: 25px;
+}
+
+.back {
+    display: inline-block;
+    color: #aaa;
+    text-decoration: none;
+    margin-bottom: 20px;
+}
+
+.back:hover {
+    color: white;
+}
+
+h1 {
+    margin-bottom: 20px;
 }
 
 .player {
+    width: 100%;
     background: #000;
-    border-radius: 10px;
+    border-radius: 12px;
     overflow: hidden;
-    border: 1px solid #29292f;
+    border: 1px solid #292933;
 }
 
-.player video {
+video {
     width: 100%;
     display: block;
-    max-height: 650px;
-    background: #000;
-}
-
-.title {
-    margin: 25px 0 15px;
-}
-
-.title h1 {
-    font-size: 28px;
+    min-height: 300px;
+    background: black;
 }
 
 .controls {
     display: flex;
+    justify-content: space-between;
     gap: 10px;
     margin: 20px 0;
-    flex-wrap: wrap;
 }
 
 .button {
-    background: #1a1a1e;
-    border: 1px solid #29292f;
-    padding: 12px 18px;
-    border-radius: 7px;
-    color: #ddd;
+    background: #ff3b81;
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: bold;
 }
 
 .button:hover {
-    background: #8d5cff;
-    color: white;
+    background: #ff5b96;
 }
 
-.episodes {
-    background: #111114;
-    border: 1px solid #242428;
-    border-radius: 10px;
-    padding: 20px;
+.button.disabled {
+    background: #292933;
+    color: #777;
+    pointer-events: none;
 }
 
-.episodes h2 {
+.episodes-title {
+    margin-top: 30px;
     margin-bottom: 15px;
 }
 
-.episode-grid {
+.episodes {
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(55px, 1fr));
     gap: 8px;
 }
 
 .episode {
-    background: #1a1a1e;
-    border: 1px solid #29292f;
+    text-decoration: none;
+    color: #ddd;
+    background: #17171f;
     padding: 10px;
     text-align: center;
-    border-radius: 6px;
-    color: #aaa;
+    border-radius: 7px;
+    border: 1px solid #252530;
 }
 
-.episode:hover,
+.episode:hover {
+    background: #252531;
+}
+
 .episode.active {
-    background: #8d5cff;
+    background: #ff3b81;
     color: white;
+    border-color: #ff3b81;
 }
 
-footer {
-    text-align: center;
-    color: #666;
-    padding: 35px;
-}
-
-@media (max-width: 700px) {
-    .episode-grid {
-        grid-template-columns: repeat(4, 1fr);
+@media (max-width: 600px) {
+    .container {
+        padding: 15px;
     }
 
-    .title h1 {
+    h1 {
         font-size: 22px;
+    }
+
+    video {
+        min-height: 220px;
+    }
+
+    .button {
+        padding: 10px 14px;
+        font-size: 14px;
     }
 }
 </style>
@@ -148,66 +147,204 @@ footer {
 <body>
 
 <header>
-    <a href="index.html" class="logo">
-        ANIME<span>HUB</span>
-    </a>
-
-    <a href="naruto.html" class="back">
-        ← К Наруто
-    </a>
+    <div class="logo">AnimeHub</div>
 </header>
 
-<main class="container">
+<div class="container">
+
+    <a class="back" id="backLink" href="index.html">
+        ← Назад
+    </a>
+
+    <h1 id="animeTitle">Загрузка...</h1>
 
     <div class="player">
-
-        <video controls poster="">
-            <source src="" type="video/mp4">
+        <video id="videoPlayer" controls>
+            <source id="videoSource" src="" type="video/mp4">
             Ваш браузер не поддерживает видео.
         </video>
-
-    </div>
-
-    <div class="title">
-        <h1>Наруто — Серия 1</h1>
     </div>
 
     <div class="controls">
-        <a href="#" class="button">← Предыдущая</a>
-        <a href="#" class="button">Следующая →</a>
+        <a id="prevButton" class="button" href="#">
+            ← Предыдущая
+        </a>
+
+        <a id="nextButton" class="button" href="#">
+            Следующая →
+        </a>
     </div>
 
-    <section class="episodes">
+    <h2 class="episodes-title">Серии</h2>
 
-        <h2>📺 Все серии</h2>
+    <div id="episodeList" class="episodes"></div>
 
-        <div class="episode-grid" id="episodeList"></div>
+</div>
 
 <script>
-const episodeList = document.getElementById("episodeList");
 
-for (let i = 1; i <= 500; i++) {
-    const episode = document.createElement("a");
+const animeDatabase = {
 
-    episode.href = "watch.html?episode=" + i;
-    episode.className = "episode";
-    episode.textContent = i;
+    "naruto": {
+        title: "Наруто: Ураганные хроники",
+        episodes: 500
+    },
 
-    episodeList.appendChild(episode);
+    "one-piece": {
+        title: "Ван-Пис",
+        episodes: 1150
+    },
+
+    "attack-on-titan": {
+        title: "Атака титанов",
+        episodes: 89
+    },
+
+    "demon-slayer": {
+        title: "Клинок, рассекающий демонов",
+        episodes: 63
+    },
+
+    "jujutsu-kaisen": {
+        title: "Магическая битва",
+        episodes: 48
+    },
+
+    "death-note": {
+        title: "Тетрадь смерти",
+        episodes: 37
+    },
+
+    "my-hero-academia": {
+        title: "Моя геройская академия",
+        episodes: 170
+    },
+
+    "chainsaw-man": {
+        title: "Человек-бензопила",
+        episodes: 12
+    },
+
+    "one-punch-man": {
+        title: "Ванпанчмен",
+        episodes: 24
+    },
+
+    "hunter-x-hunter": {
+        title: "Охотник × Охотник",
+        episodes: 148
+    },
+
+    "dr-stone": {
+        title: "Доктор Стоун",
+        episodes: 81
+    }
+
+};
+
+
+const params = new URLSearchParams(window.location.search);
+
+const animeId = params.get("anime") || "naruto";
+
+let episode = parseInt(params.get("episode")) || 1;
+
+const anime = animeDatabase[animeId] || animeDatabase["naruto"];
+
+
+if (episode < 1) {
+    episode = 1;
 }
+
+if (episode > anime.episodes) {
+    episode = anime.episodes;
+}
+
+
+/* Название страницы */
+
+document.title =
+    anime.title + " — Серия " + episode + " | AnimeHub";
+
+
+/* Заголовок */
+
+document.getElementById("animeTitle").textContent =
+    anime.title + " — Серия " + episode;
+
+
+/* Ссылка назад */
+
+document.getElementById("backLink").href =
+    "anime.html?anime=" + animeId;
+
+
+/* Предыдущая серия */
+
+const prevButton = document.getElementById("prevButton");
+
+if (episode > 1) {
+
+    prevButton.href =
+        "watch.html?anime=" +
+        animeId +
+        "&episode=" +
+        (episode - 1);
+
+} else {
+
+    prevButton.classList.add("disabled");
+
+}
+
+
+/* Следующая серия */
+
+const nextButton = document.getElementById("nextButton");
+
+if (episode < anime.episodes) {
+
+    nextButton.href =
+        "watch.html?anime=" +
+        animeId +
+        "&episode=" +
+        (episode + 1);
+
+} else {
+
+    nextButton.classList.add("disabled");
+
+}
+
+
+/* Создание списка серий */
+
+const episodeList =
+    document.getElementById("episodeList");
+
+
+for (let i = 1; i <= anime.episodes; i++) {
+
+    const link = document.createElement("a");
+
+    link.className = "episode";
+
+    link.textContent = i;
+
+    link.href =
+        "watch.html?anime=" +
+        animeId +
+        "&episode=" +
+        i;
+
+    if (i === episode) {
+        link.classList.add("active");
+    }
+
+    episodeList.appendChild(link);
+}
+
 </script>
-
-    </section>
-
-</main>
-
-<footer>
-    <div class="logo">
-        ANIME<span>HUB</span>
-    </div>
-
-    <p>AnimeHub © 2026</p>
-</footer>
 
 </body>
 </html>
