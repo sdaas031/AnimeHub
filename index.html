@@ -4,9 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>AnimeHub — смотреть аниме</title>
+<title>AnimeHub — Аниме смотреть онлайн</title>
 
 <style>
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -24,7 +25,7 @@ a {
     text-decoration: none;
 }
 
-/* ШАПКА */
+/* HEADER */
 
 header {
     height: 65px;
@@ -38,7 +39,7 @@ header {
 
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 10;
 }
 
 .logo {
@@ -52,8 +53,8 @@ header {
 
 nav {
     display: flex;
-    margin-left: 45px;
     gap: 25px;
+    margin-left: 40px;
 }
 
 nav a {
@@ -70,27 +71,19 @@ nav a:hover {
 }
 
 .search input {
-    width: 220px;
-
+    width: 230px;
     background: #1a1a1e;
-    border: 1px solid #2b2b31;
-
+    border: 1px solid #29292f;
+    border-radius: 7px;
+    padding: 10px 12px;
     color: white;
-
-    padding: 10px 14px;
-
-    border-radius: 8px;
     outline: none;
 }
 
-.search input:focus {
-    border-color: #8d5cff;
-}
+/* LAYOUT */
 
-/* ОСНОВНОЙ КОНТЕЙНЕР */
-
-.container {
-    max-width: 1400px;
+.layout {
+    max-width: 1250px;
     margin: auto;
 
     display: grid;
@@ -98,188 +91,162 @@ nav a:hover {
 
     gap: 25px;
 
-    padding: 25px;
+    padding: 25px 15px;
 }
 
-/* БОКОВОЕ МЕНЮ */
+/* SIDEBAR */
 
 .sidebar {
     background: #111114;
 
     border: 1px solid #242428;
+
     border-radius: 10px;
 
-    padding: 18px;
+    padding: 20px;
 
-    height: max-content;
-
-    position: sticky;
-    top: 90px;
+    height: fit-content;
 }
 
 .sidebar h3 {
-    font-size: 13px;
-
-    color: #888;
-
-    text-transform: uppercase;
-
     margin-bottom: 15px;
 }
 
 .sidebar a {
     display: block;
 
-    padding: 10px 8px;
+    color: #999;
 
-    color: #aaa;
-
-    border-radius: 6px;
+    padding: 9px 0;
 
     font-size: 14px;
-
-    margin-bottom: 3px;
 }
 
 .sidebar a:hover {
-    background: #1d1928;
-    color: #a77aff;
+    color: #8d5cff;
 }
 
-/* КОНТЕНТ */
+/* HERO */
 
-.content {
-    min-width: 0;
-}
-
-/* БАННЕР */
-
-.feature {
-    min-height: 290px;
+.hero {
+    min-height: 300px;
 
     border-radius: 12px;
 
-    overflow: hidden;
+    padding: 35px;
+
+    display: flex;
+
+    align-items: flex-end;
 
     position: relative;
 
-    margin-bottom: 35px;
+    overflow: hidden;
 
     background:
         radial-gradient(
-            circle at 75% 30%,
-            rgba(139,92,246,.5),
-            transparent 30%
+            circle at 80% 30%,
+            #f59e0b,
+            transparent 25%
         ),
         linear-gradient(
-            120deg,
-            #19151f,
-            #322064
+            135deg,
+            #312e81,
+            #111827
         );
 }
 
-.feature-content {
+.hero::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            transparent,
+            rgba(0,0,0,.9)
+        );
+}
+
+.hero-content {
     position: relative;
 
     z-index: 2;
 
-    padding: 45px;
-
-    max-width: 600px;
+    max-width: 650px;
 }
 
-.feature-label {
-    color: #a77aff;
+.hero h1 {
+    font-size: 38px;
 
-    font-size: 12px;
-
-    font-weight: bold;
-
-    letter-spacing: 2px;
-
-    margin-bottom: 12px;
+    margin-bottom: 10px;
 }
 
-.feature h1 {
-    font-size: 42px;
-
-    margin-bottom: 12px;
-}
-
-.feature p {
-    color: #aaa;
+.hero p {
+    color: #bbb;
 
     line-height: 1.6;
 
     margin-bottom: 20px;
 }
 
-.watch-button {
+.button {
     display: inline-block;
 
     background: #8d5cff;
 
-    padding: 12px 18px;
+    padding: 12px 20px;
 
     border-radius: 7px;
 
     font-weight: bold;
-
-    transition: .2s;
 }
 
-.watch-button:hover {
-    background: #7544e8;
+.button:hover {
+    background: #7445e8;
 }
 
-/* РАЗДЕЛЫ */
+/* SECTION */
 
-.section {
-    margin-bottom: 40px;
+section {
+    margin-top: 30px;
 }
 
-.section-header {
+.section-title {
     display: flex;
 
     justify-content: space-between;
+
     align-items: center;
 
-    margin-bottom: 18px;
+    margin-bottom: 15px;
 }
 
-.section-header h2 {
-    font-size: 21px;
+.section-title h2 {
+    font-size: 22px;
 }
 
-.section-header a {
-    color: #8d5cff;
+/* CARDS */
 
-    font-size: 13px;
-}
-
-/* СЕТКА */
-
-.anime-grid {
+.grid {
     display: grid;
 
     grid-template-columns:
         repeat(4, 1fr);
 
-    gap: 16px;
+    gap: 15px;
 }
-
-/* КАРТОЧКА */
 
 .card {
     background: #111114;
 
     border: 1px solid #242428;
 
-    border-radius: 9px;
+    border-radius: 10px;
 
     overflow: hidden;
-
-    cursor: pointer;
 
     transition: .2s;
 }
@@ -287,21 +254,19 @@ nav a:hover {
 .card:hover {
     transform: translateY(-4px);
 
-    border-color: #6f49bb;
+    border-color: #8d5cff;
 }
 
-/* ПОСТЕР */
-
 .poster {
-    height: 250px;
-
-    position: relative;
+    height: 260px;
 
     display: flex;
 
     align-items: flex-end;
 
     padding: 15px;
+
+    position: relative;
 }
 
 .poster::after {
@@ -313,7 +278,7 @@ nav a:hover {
 
     background:
         linear-gradient(
-            transparent 40%,
+            transparent 45%,
             rgba(0,0,0,.85)
         );
 }
@@ -323,76 +288,60 @@ nav a:hover {
 
     z-index: 2;
 
-    font-size: 17px;
+    font-size: 22px;
 
     font-weight: bold;
 }
 
-/* ЦВЕТА ПОСТЕРОВ */
+/* POSTER COLORS */
 
 .naruto {
     background:
-        radial-gradient(
-            circle at 70% 25%,
-            #f59e0b,
-            transparent 25%
-        ),
         linear-gradient(
             145deg,
             #312e81,
-            #111827
+            #f59e0b
         );
 }
 
-.onepiece {
+.one-piece {
     background:
-        radial-gradient(
-            circle at 30% 25%,
-            #38bdf8,
-            transparent 25%
-        ),
         linear-gradient(
             145deg,
-            #075985,
-            #111827
+            #2563eb,
+            #dc2626
         );
 }
 
-.aot {
+.bleach {
     background:
-        radial-gradient(
-            circle at 65% 30%,
-            #ef4444,
-            transparent 25%
-        ),
         linear-gradient(
             145deg,
-            #451a03,
-            #111827
+            #111827,
+            #e5e7eb
+        );
+}
+
+.attack {
+    background:
+        linear-gradient(
+            145deg,
+            #374151,
+            #991b1b
         );
 }
 
 .demon {
     background:
-        radial-gradient(
-            circle at 30% 25%,
-            #22c55e,
-            transparent 25%
-        ),
         linear-gradient(
             145deg,
-            #14532d,
-            #111827
+            #0f766e,
+            #991b1b
         );
 }
 
 .jujutsu {
     background:
-        radial-gradient(
-            circle at 70% 25%,
-            #a855f7,
-            transparent 25%
-        ),
         linear-gradient(
             145deg,
             #581c87,
@@ -400,56 +349,68 @@ nav a:hover {
         );
 }
 
-.hero {
+.death {
     background:
-        radial-gradient(
-            circle at 30% 25%,
-            #22d3ee,
-            transparent 25%
-        ),
         linear-gradient(
             145deg,
-            #164e63,
+            #111827,
+            #7f1d1d
+        );
+}
+
+.hero-academia {
+    background:
+        linear-gradient(
+            145deg,
+            #0369a1,
+            #facc15
+        );
+}
+
+.chainsaw {
+    background:
+        linear-gradient(
+            145deg,
+            #991b1b,
             #111827
         );
 }
 
-.death {
+.one-punch {
     background:
-        radial-gradient(
-            circle at 70% 25%,
-            #ef4444,
-            transparent 25%
-        ),
         linear-gradient(
             145deg,
-            #111827,
-            #030712
+            #dc2626,
+            #facc15
         );
 }
 
 .hunter {
     background:
-        radial-gradient(
-            circle at 30% 25%,
-            #facc15,
-            transparent 25%
-        ),
         linear-gradient(
             145deg,
-            #713f12,
-            #111827
+            #15803d,
+            #2563eb
         );
 }
 
-/* ИНФОРМАЦИЯ КАРТОЧКИ */
+.dr-stone {
+    background:
+        linear-gradient(
+            145deg,
+            #0f766e,
+            #65a30d
+        );
+}
+
+/* CARD INFO */
 
 .card-info {
-    padding: 12px;
+    padding: 15px;
 }
 
 .card-info h3 {
-    font-size: 14px;
+    font-size: 16px;
 
     margin-bottom: 7px;
 }
@@ -457,58 +418,36 @@ nav a:hover {
 .card-info p {
     color: #777;
 
-    font-size: 12px;
+    font-size: 13px;
 }
 
-/* ФУТЕР */
+/* FOOTER */
 
 footer {
-    border-top: 1px solid #242428;
-
-    padding: 30px;
-
     text-align: center;
 
     color: #666;
 
-    font-size: 13px;
+    padding: 40px;
 
     margin-top: 30px;
+
+    border-top: 1px solid #242428;
 }
 
-/* МОБИЛЬНАЯ ВЕРСИЯ */
+/* MOBILE */
 
 @media (max-width: 900px) {
 
-    .container {
+    .layout {
         grid-template-columns: 1fr;
-
-        padding: 15px;
     }
 
     .sidebar {
-        position: static;
-
-        display: flex;
-
-        gap: 6px;
-
-        overflow-x: auto;
-
-        padding: 10px;
-    }
-
-    .sidebar h3 {
         display: none;
     }
 
-    .sidebar a {
-        white-space: nowrap;
-
-        margin: 0;
-    }
-
-    .anime-grid {
+    .grid {
         grid-template-columns:
             repeat(3, 1fr);
     }
@@ -524,474 +463,546 @@ footer {
         display: none;
     }
 
-    .search {
-        margin-left: auto;
-    }
-
     .search input {
-        width: 135px;
+        width: 140px;
     }
 
-    .container {
-        padding: 12px;
+    .hero {
+        min-height: 260px;
+        padding: 25px;
     }
 
-    .feature {
-        min-height: 320px;
+    .hero h1 {
+        font-size: 28px;
     }
 
-    .feature-content {
-        padding: 30px 25px;
-    }
-
-    .feature h1 {
-        font-size: 30px;
-    }
-
-    .anime-grid {
+    .grid {
         grid-template-columns:
             repeat(2, 1fr);
-
-        gap: 10px;
     }
 
     .poster {
-        height: 210px;
+        height: 220px;
     }
 
-    .card-info {
-        padding: 10px;
-    }
-
-    .card-info h3 {
-        font-size: 13px;
-    }
 }
+
 </style>
+
 </head>
 
 <body>
 
+
 <header>
 
-    <a href="#" class="logo">
+    <a href="index.html" class="logo">
         ANIME<span>HUB</span>
     </a>
 
+
     <nav>
-        <a href="#">Главная</a>
-        <a href="#popular">Популярное</a>
-        <a href="#new">Новинки</a>
-        <a href="#genres">Жанры</a>
+
+        <a href="#popular">
+            Популярное
+        </a>
+
+        <a href="#new">
+            Новинки
+        </a>
+
+        <a href="#genres">
+            Жанры
+        </a>
+
     </nav>
 
+
     <div class="search">
+
         <input
             id="search"
-            type="search"
-            placeholder="Поиск..."
+            type="text"
+            placeholder="Поиск аниме..."
         >
+
     </div>
 
 </header>
 
 
-<div class="container">
 
-    <!-- БОКОВОЕ МЕНЮ -->
+<div class="layout">
 
-    <aside class="sidebar">
 
-        <h3>Категории</h3>
+<aside class="sidebar">
 
-        <a href="#popular">🔥 Популярное</a>
+    <h3>
+        Жанры
+    </h3>
 
-        <a href="#new">✨ Новинки</a>
+    <a href="#">
+        Экшен
+    </a>
 
-        <a href="#genres">⚔️ Экшен</a>
+    <a href="#">
+        Приключения
+    </a>
 
-        <a href="#genres">🗺 Приключения</a>
+    <a href="#">
+        Комедия
+    </a>
 
-        <a href="#genres">🔮 Фэнтези</a>
+    <a href="#">
+        Фэнтези
+    </a>
 
-        <a href="#genres">❤️ Романтика</a>
+    <a href="#">
+        Драма
+    </a>
 
-        <a href="#genres">👻 Ужасы</a>
+    <a href="#">
+        Романтика
+    </a>
 
-        <a href="#genres">😂 Комедия</a>
+    <a href="#">
+        Сёнэн
+    </a>
 
-    </aside>
+    <a href="#">
+        Ужасы
+    </a>
 
+</aside>
 
-    <!-- ОСНОВНОЙ КОНТЕНТ -->
 
-    <main class="content">
 
-        <!-- ГЛАВНЫЙ БАННЕР -->
+<main>
 
-        <section class="feature">
 
-            <div class="feature-content">
+<div class="hero">
 
-                <div class="feature-label">
-                    АНИМЕ ДНЯ
-                </div>
+    <div class="hero-content">
 
-                <h1>
-                    Клинок,
-                    рассекающий демонов
-                </h1>
+        <h1>
+            Наруто: Ураганные хроники
+        </h1>
 
-                <p>
-                    История Тандзиро Камадо,
-                    который отправляется в путь,
-                    чтобы спасти свою сестру
-                    и сразиться с демонами.
-                </p>
+        <p>
+            Смотрите популярные аниме,
+            выбирайте серии и продолжайте
+            просмотр с любого устройства.
+        </p>
 
-                <a
-                    href="#popular"
-                    class="watch-button"
-                >
-                    Смотреть →
-                </a>
+        <a
+            href="anime.html?anime=naruto"
+            class="button">
 
-            </div>
+            Смотреть
 
-        </section>
+        </a>
 
-
-        <!-- ПОПУЛЯРНОЕ -->
-
-        <section
-            class="section"
-            id="popular"
-        >
-
-            <div class="section-header">
-
-                <h2>
-                    🔥 Популярное
-                </h2>
-
-                <a href="#">
-                    Все аниме →
-                </a>
-
-            </div>
-
-
-            <div class="anime-grid">
-
-
-                <a href="naruto.html" class="card">
-
-                    <div class="poster naruto">
-
-                        <div class="poster-title">
-                            Наруто
-                        </div>
-
-                    </div>
-
-                    <div class="card-info">
-
-                        <h3>
-                            Наруто: Ураганные хроники
-                        </h3>
-
-                        <p>
-                            2007 · Экшен
-                        </p>
-
-                    </div>
-
-                </a>
-
-
-                <article class="card">
-
-                    <div class="poster onepiece">
-
-                        <div class="poster-title">
-                            One Piece
-                        </div>
-
-                    </div>
-
-                    <div class="card-info">
-
-                        <h3>
-                            Ван Пис
-                        </h3>
-
-                        <p>
-                            1999 · Приключения
-                        </p>
-
-                    </div>
-
-                </article>
-
-
-                <article class="card">
-
-                    <div class="poster aot">
-
-                        <div class="poster-title">
-                            Атака титанов
-                        </div>
-
-                    </div>
-
-                    <div class="card-info">
-
-                        <h3>
-                            Атака титанов
-                        </h3>
-
-                        <p>
-                            2013 · Экшен
-                        </p>
-
-                    </div>
-
-                </article>
-
-
-                <article class="card">
-
-                    <div class="poster demon">
-
-                        <div class="poster-title">
-                            Клинок
-                        </div>
-
-                    </div>
-
-                    <div class="card-info">
-
-                        <h3>
-                            Клинок, рассекающий демонов
-                        </h3>
-
-                        <p>
-                            2019 · Фэнтези
-                        </p>
-
-                    </div>
-
-                </article>
-
-            </div>
-
-        </section>
-
-
-        <!-- НОВИНКИ -->
-
-        <section
-            class="section"
-            id="new"
-        >
-
-            <div class="section-header">
-
-                <h2>
-                    ✨ Новинки
-                </h2>
-
-                <a href="#">
-                    Все новинки →
-                </a>
-
-            </div>
-
-
-            <div class="anime-grid">
-
-
-                <article class="card">
-
-                    <div class="poster jujutsu">
-
-                        <div class="poster-title">
-                            Магическая битва
-                        </div>
-
-                    </div>
-
-                    <div class="card-info">
-
-                        <h3>
-                            Магическая битва
-                        </h3>
-
-                        <p>
-                            2020 · Фэнтези
-                        </p>
-
-                    </div>
-
-                </article>
-
-
-                <article class="card">
-
-                    <div class="poster hero">
-
-                        <div class="poster-title">
-                            Моя геройская академия
-                        </div>
-
-                    </div>
-
-                    <div class="card-info">
-
-                        <h3>
-                            Моя геройская академия
-                        </h3>
-
-                        <p>
-                            2016 · Экшен
-                        </p>
-
-                    </div>
-
-                </article>
-
-
-                <article class="card">
-
-                    <div class="poster death">
-
-                        <div class="poster-title">
-                            Тетрадь смерти
-                        </div>
-
-                    </div>
-
-                    <div class="card-info">
-
-                        <h3>
-                            Тетрадь смерти
-                        </h3>
-
-                        <p>
-                            2006 · Драма
-                        </p>
-
-                    </div>
-
-                </article>
-
-
-                <article class="card">
-
-                    <div class="poster hunter">
-
-                        <div class="poster-title">
-                            Hunter × Hunter
-                        </div>
-
-                    </div>
-
-                    <div class="card-info">
-
-                        <h3>
-                            Хантер × Хантер
-                        </h3>
-
-                        <p>
-                            2011 · Приключения
-                        </p>
-
-                    </div>
-
-                </article>
-
-            </div>
-
-        </section>
-
-
-        <!-- ЖАНРЫ -->
-
-        <section
-            class="section"
-            id="genres"
-        >
-
-            <div class="section-header">
-
-                <h2>
-                    🎭 Жанры
-                </h2>
-
-            </div>
-
-
-            <div class="anime-grid">
-
-
-                <article class="card">
-
-                    <div class="poster aot">
-
-                        <div class="poster-title">
-                            ⚔️ Экшен
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-                <article class="card">
-
-                    <div class="poster onepiece">
-
-                        <div class="poster-title">
-                            🗺 Приключения
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-                <article class="card">
-
-                    <div class="poster jujutsu">
-
-                        <div class="poster-title">
-                            🔮 Фэнтези
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-                <article class="card">
-
-                    <div class="poster demon">
-
-                        <div class="poster-title">
-                            👻 Ужасы
-                        </div>
-
-                    </div>
-
-                </article>
-
-            </div>
-
-        </section>
-
-    </main>
+    </div>
 
 </div>
+
+
+
+<section id="popular">
+
+<div class="section-title">
+
+    <h2>
+        🔥 Популярное
+    </h2>
+
+</div>
+
+
+<div class="grid">
+
+
+<a
+    href="anime.html?anime=naruto"
+    class="card">
+
+    <div class="poster naruto">
+
+        <div class="poster-title">
+            НАРУТО
+        </div>
+
+    </div>
+
+    <div class="card-info">
+
+        <h3>
+            Наруто: Ураганные хроники
+        </h3>
+
+        <p>
+            2007 · Экшен
+        </p>
+
+    </div>
+
+</a>
+
+
+
+<a
+    href="anime.html?anime=one-piece"
+    class="card">
+
+    <div class="poster one-piece">
+
+        <div class="poster-title">
+            ONE PIECE
+        </div>
+
+    </div>
+
+    <div class="card-info">
+
+        <h3>
+            Ван-Пис
+        </h3>
+
+        <p>
+            1999 · Приключения
+        </p>
+
+    </div>
+
+</a>
+
+
+
+<a
+    href="anime.html?anime=attack-on-titan"
+    class="card">
+
+    <div class="poster attack">
+
+        <div class="poster-title">
+            ATTACK ON TITAN
+        </div>
+
+    </div>
+
+    <div class="card-info">
+
+        <h3>
+            Атака титанов
+        </h3>
+
+        <p>
+            2013 · Экшен
+        </p>
+
+    </div>
+
+</a>
+
+
+
+<a
+    href="anime.html?anime=demon-slayer"
+    class="card">
+
+    <div class="poster demon">
+
+        <div class="poster-title">
+            DEMON SLAYER
+        </div>
+
+    </div>
+
+    <div class="card-info">
+
+        <h3>
+            Клинок, рассекающий демонов
+        </h3>
+
+        <p>
+            2019 · Фэнтези
+        </p>
+
+    </div>
+
+</a>
+
+
+</div>
+
+</section>
+
+
+
+<section id="new">
+
+<div class="section-title">
+
+    <h2>
+        🆕 Новинки
+    </h2>
+
+</div>
+
+
+<div class="grid">
+
+
+<a
+    href="anime.html?anime=jujutsu-kaisen"
+    class="card">
+
+    <div class="poster jujutsu">
+
+        <div class="poster-title">
+            JUJUTSU
+        </div>
+
+    </div>
+
+    <div class="card-info">
+
+        <h3>
+            Магическая битва
+        </h3>
+
+        <p>
+            2020 · Экшен
+        </p>
+
+    </div>
+
+</a>
+
+
+
+<a
+    href="anime.html?anime=death-note"
+    class="card">
+
+    <div class="poster death">
+
+        <div class="poster-title">
+            DEATH NOTE
+        </div>
+
+    </div>
+
+    <div class="card-info">
+
+        <h3>
+            Тетрадь смерти
+        </h3>
+
+        <p>
+            2006 · Триллер
+        </p>
+
+    </div>
+
+</a>
+
+
+
+<a
+    href="#"
+    class="card">
+
+    <div class="poster hero-academia">
+
+        <div class="poster-title">
+            MY HERO
+        </div>
+
+    </div>
+
+    <div class="card-info">
+
+        <h3>
+            Моя геройская академия
+        </h3>
+
+        <p>
+            2016 · Экшен
+        </p>
+
+    </div>
+
+</a>
+
+
+
+<a
+    href="#"
+    class="card">
+
+    <div class="poster chainsaw">
+
+        <div class="poster-title">
+            CHAINSAW MAN
+        </div>
+
+    </div>
+
+    <div class="card-info">
+
+        <h3>
+            Человек-бензопила
+        </h3>
+
+        <p>
+            2022 · Экшен
+        </p>
+
+    </div>
+
+</a>
+
+
+
+<a
+    href="#"
+    class="card">
+
+    <div class="poster one-punch">
+
+        <div class="poster-title">
+            ONE PUNCH MAN
+        </div>
+
+    </div>
+
+    <div class="card-info">
+
+        <h3>
+            Ванпанчмен
+        </h3>
+
+        <p>
+            2015 · Комедия
+        </p>
+
+    </div>
+
+</a>
+
+
+
+<a
+    href="#"
+    class="card">
+
+    <div class="poster hunter">
+
+        <div class="poster-title">
+            HUNTER × HUNTER
+        </div>
+
+    </div>
+
+    <div class="card-info">
+
+        <h3>
+            Хантер × Хантер
+        </h3>
+
+        <p>
+            2011 · Приключения
+        </p>
+
+    </div>
+
+</a>
+
+
+
+<a
+    href="#"
+    class="card">
+
+    <div class="poster dr-stone">
+
+        <div class="poster-title">
+            DR. STONE
+        </div>
+
+    </div>
+
+    <div class="card-info">
+
+        <h3>
+            Доктор Стоун
+        </h3>
+
+        <p>
+            2019 · Фантастика
+        </p>
+
+    </div>
+
+</a>
+
+
+</div>
+
+</section>
+
+
+
+<section id="genres">
+
+<div class="section-title">
+
+    <h2>
+        🎭 Жанры
+    </h2>
+
+</div>
+
+<div class="grid">
+
+    <a href="#" class="card">
+        <div class="card-info">
+            <h3>⚔️ Экшен</h3>
+            <p>Аниме с битвами и приключениями</p>
+        </div>
+    </a>
+
+    <a href="#" class="card">
+        <div class="card-info">
+            <h3>🗺️ Приключения</h3>
+            <p>Путешествия и новые миры</p>
+        </div>
+    </a>
+
+    <a href="#" class="card">
+        <div class="card-info">
+            <h3>😂 Комедия</h3>
+            <p>Весёлые истории</p>
+        </div>
+    </a>
+
+    <a href="#" class="card">
+        <div class="card-info">
+            <h3>👻 Фэнтези</h3>
+            <p>Магия и фантастические миры</p>
+        </div>
+    </a>
+
+</div>
+
+</section>
+
+
+</main>
+
+</div>
+
 
 
 <footer>
@@ -1007,34 +1018,50 @@ footer {
 </footer>
 
 
+
 <script>
 
 const search =
-    document.getElementById("search");
+    document.getElementById(
+        "search"
+    );
+
 
 const cards =
-    document.querySelectorAll(".card");
+    document.querySelectorAll(
+        ".card"
+    );
+
 
 search.addEventListener(
     "input",
-    function () {
+    function() {
 
-        const value =
-            this.value.toLowerCase();
+        const query =
+            this.value
+            .toLowerCase()
+            .trim();
+
 
         cards.forEach(
             card => {
 
                 const text =
-                    card.innerText.toLowerCase();
+                    card.textContent
+                    .toLowerCase();
 
-                if (text.includes(value)) {
 
-                    card.style.display = "";
+                if (
+                    text.includes(query)
+                ) {
+
+                    card.style.display =
+                        "";
 
                 } else {
 
-                    card.style.display = "none";
+                    card.style.display =
+                        "none";
 
                 }
 
@@ -1045,6 +1072,7 @@ search.addEventListener(
 );
 
 </script>
+
 
 </body>
 </html>
