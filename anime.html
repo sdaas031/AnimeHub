@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AnimeHub</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #0b0b0d;
+    color: #eee;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+header {
+    height: 65px;
+    background: #111114;
+    border-bottom: 1px solid #242428;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 900;
+}
+
+.logo span {
+    color: #8d5cff;
+}
+
+.back {
+    margin-left: 30px;
+    color: #aaa;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 30px 15px;
+}
+
+.anime {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 30px;
+    background: #111114;
+    border: 1px solid #242428;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 25px;
+}
+
+.poster {
+    height: 370px;
+    border-radius: 9px;
+    display: flex;
+    align-items: flex-end;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.poster-title {
+    position: relative;
+    z-index: 2;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.info h1 {
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+.description {
+    color: #aaa;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.tag {
+    background: #1d1928;
+    color: #a77aff;
+    padding: 7px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+}
+
+.info-list {
+    color: #999;
+    line-height: 1.9;
+}
+
+.info-list span {
+    color: #eee;
+}
+
+.episodes {
+    background: #111114;
+    border: 1px solid #242428;
+    border-radius: 12px;
+    padding: 25px;
+}
+
+.episodes h2 {
+    margin-bottom: 20px;
+}
+
+.episode-grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 8px;
+}
+
+.episode {
+    background: #1a1a1e;
+    border: 1px solid #29292f;
+    padding: 10px;
+    text-align: center;
+    border-radius: 6px;
+    color: #aaa;
+}
+
+.episode:hover {
+    background: #8d5cff;
+    color: white;
+}
+
+footer {
+    text-align: center;
+    color: #666;
+    padding: 35px;
+    margin-top: 30px;
+}
+
+@media (max-width: 700px) {
+
+    .anime {
+        grid-template-columns: 1fr;
+        padding: 15px;
+    }
+
+    .poster {
+        width: 240px;
+        height: 320px;
+        margin: auto;
+    }
+
+    .info h1 {
+        font-size: 28px;
+    }
+
+    .episode-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <a href="index.html" class="logo">
+        ANIME<span>HUB</span>
+    </a>
+
+    <a href="index.html" class="back">
+        ← На главную
+    </a>
+
+</header>
+
+
+<main class="container">
+
+    <section class="anime">
+
+        <div
+            class="poster"
+            id="poster">
+
+            <div
+                class="poster-title"
+                id="posterTitle">
+            </div>
+
+        </div>
+
+
+        <div class="info">
+
+            <h1 id="title"></h1>
+
+            <p
+                class="description"
+                id="description">
+            </p>
+
+
+            <div
+                class="tags"
+                id="tags">
+            </div>
+
+
+            <div
+                class="info-list"
+                id="info">
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="episodes">
+
+        <h2>
+            📺 Серии
+        </h2>
+
+        <div
+            class="episode-grid"
+            id="episodeList">
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <div class="logo">
+        ANIME<span>HUB</span>
+    </div>
+
+    <p>
+        AnimeHub © 2026
+    </p>
+
+</footer>
+
+
+<script>
+
+/* База аниме */
+
+const animeDatabase = {
+
+    naruto: {
+        title: "Наруто: Ураганные хроники",
+        short: "НАРУТО",
+        description:
+            "Наруто Удзумаки возвращается в Коноху после долгих тренировок. Вместе со своими друзьями он продолжает путь ниндзя.",
+        year: "2007",
+        status: "Завершено",
+        episodes: 500,
+        studio: "Pierrot",
+        tags: [
+            "Экшен",
+            "Приключения",
+            "Сёнэн",
+            "Фэнтези"
+        ],
+        gradient:
+            "linear-gradient(145deg,#312e81,#f59e0b)"
+    },
+
+
+    "one-piece": {
+        title: "Ван-Пис",
+        short: "ONE PIECE",
+        description:
+            "Приключения Монки Д. Луффи и его команды в поисках легендарного сокровища One Piece.",
+        year: "1999",
+        status: "Выходит",
+        episodes: 1150,
+        studio: "Toei Animation",
+        tags: [
+            "Экшен",
+            "Приключения",
+            "Сёнэн",
+            "Комедия"
+        ],
+        gradient:
+            "linear-gradient(145deg,#2563eb,#dc2626)"
+    },
+
+
+    "attack-on-titan": {
+        title: "Атака титанов",
+        short: "ATTACK ON TITAN",
+        description:
+            "Человечество пытается выжить за огромными стенами, защищаясь от гигантских титанов.",
+        year: "2013",
+        status: "Завершено",
+        episodes: 89,
+        studio: "MAPPA",
+        tags: [
+            "Экшен",
+            "Драма",
+            "Фэнтези"
+        ],
+        gradient:
+            "linear-gradient(145deg,#374151,#991b1b)"
+    },
+
+
+    "demon-slayer": {
+        title: "Клинок, рассекающий демонов",
+        short: "DEMON SLAYER",
+        description:
+            "Тандзиро отправляется в опасное путешествие, чтобы спасти сестру и сразиться с демонами.",
+        year: "2019",
+        status: "Выходит",
+        episodes: 63,
+        studio: "Ufotable",
+        tags: [
+            "Экшен",
+            "Фэнтези",
+            "Сёнэн"
+        ],
+        gradient:
+            "linear-gradient(145deg,#0f766e,#991b1b)"
+    },
+
+
+    "jujutsu-kaisen": {
+        title: "Магическая битва",
+        short: "JUJUTSU KAISEN",
+        description:
+            "Юдзи Итадори оказывается втянут в мир проклятий и магов.",
+        year: "2020",
+        status: "Выходит",
+        episodes: 48,
+        studio: "MAPPA",
+        tags: [
+            "Экшен",
+            "Сёнэн",
+            "Фэнтези"
+        ],
+        gradient:
+            "linear-gradient(145deg,#581c87,#111827)"
+    },
+
+
+    "death-note": {
+        title: "Тетрадь смерти",
+        short: "DEATH NOTE",
+        description:
+            "Старшеклассник получает загадочную тетрадь, способную убивать людей.",
+        year: "2006",
+        status: "Завершено",
+        episodes: 37,
+        studio: "Madhouse",
+        tags: [
+            "Триллер",
+            "Драма",
+            "Мистика"
+        ],
+        gradient:
+            "linear-gradient(145deg,#111827,#7f1d1d)"
+    }
+
+};
+
+
+/* Получаем anime из адреса */
+
+const params =
+    new URLSearchParams(
+        window.location.search
+    );
+
+const animeId =
+    params.get("anime") || "naruto";
+
+
+/* Находим аниме */
+
+const anime =
+    animeDatabase[animeId] ||
+    animeDatabase.naruto;
+
+
+/* Заполняем страницу */
+
+document.title =
+    anime.title + " — AnimeHub";
+
+
+document.getElementById(
+    "title"
+).textContent =
+    anime.title;
+
+
+document.getElementById(
+    "posterTitle"
+).textContent =
+    anime.short;
+
+
+document.getElementById(
+    "description"
+).textContent =
+    anime.description;
+
+
+document.getElementById(
+    "poster"
+).style.background =
+    anime.gradient;
+
+
+/* Жанры */
+
+const tags =
+    document.getElementById("tags");
+
+
+anime.tags.forEach(tag => {
+
+    const element =
+        document.createElement("div");
+
+    element.className = "tag";
+
+    element.textContent = tag;
+
+    tags.appendChild(element);
+
+});
+
+
+/* Информация */
+
+document.getElementById(
+    "info"
+).innerHTML = `
+
+    <div>
+        Год:
+        <span>${anime.year}</span>
+    </div>
+
+    <div>
+        Статус:
+        <span>${anime.status}</span>
+    </div>
+
+    <div>
+        Серий:
+        <span>${anime.episodes}</span>
+    </div>
+
+    <div>
+        Студия:
+        <span>${anime.studio}</span>
+    </div>
+
+`;
+
+
+/* Серии */
+
+const episodeList =
+    document.getElementById(
+        "episodeList"
+    );
+
+
+for (
+    let i = 1;
+    i <= anime.episodes;
+    i++
+) {
+
+    const episode =
+        document.createElement("a");
+
+    episode.className =
+        "episode";
+
+    episode.textContent = i;
+
+    episode.href =
+        "watch.html?anime=" +
+        animeId +
+        "&episode=" +
+        i;
+
+    episodeList.appendChild(
+        episode
+    );
+
+}
+
+</script>
+
+</body>
+</html>
